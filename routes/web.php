@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FakeStudentController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\DB;
 //use request de nhan du lieu gui len 
@@ -25,14 +26,14 @@ Route::view('/admin', 'test-admin');
 Route::get('/fakeStudent/{id}/{age}', function ($id, $number){
     dd('gia tri truyen vao tren url : '. $id);
 });
-Route::get('/fakeStudent', function (){
-    //lay ra mang student
-    $student = DB::table('fakeStudent') -> get();
-    // return $student;
-    //lay ra 1 student
-    // $student = DB::table('fakeStudent') -> where('id','=',1)->first();
-    return view('demoView' , ['student' => $student]);
-});
+// Route::get('/fakeStudent', function (){
+//     //lay ra mang student
+//     $student = DB::table('fakeStudent') -> get();
+//     // return $student;
+//     //lay ra 1 student
+//     // $student = DB::table('fakeStudent') -> where('id','=',1)->first();
+//     return view('demoView' , ['student' => $student]);
+// });
 Route::get('/fakeStudent/detail', function (){
     // return view('welcome'); ;
     $student = DB::table('fakeStudent') -> where('id', '<',5)->get();
@@ -67,3 +68,12 @@ Route::post('/post-login', function(Request $request){
     //neu khong dc thi quay laij login-view
     return redirect() -> route('login-view');
 })->name('post-login');
+
+
+// tao route resource cho student controller
+Route::resource('/FakeStudent', FakeStudentController::class);
+
+// Tao route cho subject controller khong dung resource
+// Route::get('/Fakestudent', [FakeStudentController::class, 'index']) ->name('FakeStudent.index');
+
+
