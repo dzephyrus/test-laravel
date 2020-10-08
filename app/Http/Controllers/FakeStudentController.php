@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use DB;
 use App\Models\fakestudent;
 use Illuminate\Http\Request;
 
@@ -44,6 +44,11 @@ class FakeStudentController extends Controller
     public function store(Request $request)
     {
         //
+        $student = new fakestudent;
+
+        $student->fakeStudent_name = $request->fakeStudent_name;
+        // ....
+        $student->save();
     }
 
     /**
@@ -70,9 +75,10 @@ class FakeStudentController extends Controller
      * @param  \App\Models\fakestudent  $fakestudent
      * @return \Illuminate\Http\Response
      */
-    public function edit(fakestudent $fakestudent)
+    public function edit(fakestudent $FakeStudent)
     {
         //
+        return view('student.edit', ['student' => $FakeStudent]);
 
     }
 
@@ -86,6 +92,17 @@ class FakeStudentController extends Controller
     public function update(Request $request, fakestudent $fakestudent)
     {
         //
+        // dd($request->all());
+        //gan gia tri moi cho cac thuoc tinh cuar student can update
+        $fakestudent->fakeStudent_name = $request->fakeStudent_name;
+        // Thuc hien goi phuong thuc save() de luu du lieu
+        $fakestudent->save();
+        
+        // Cach 2: $student->update(['name' => $request->name]);
+        // Hoac $student->update([$request->all()])
+        // Khong can save
+
+        return redirect() ->route('FakeStudent.index');
     }
 
     /**
@@ -96,6 +113,14 @@ class FakeStudentController extends Controller
      */
     public function destroy(fakestudent $fakestudent)
     {
-        //
+        // Kiem tra ton tai sinh vien -> xoa
+        if($fakestudent) {
+            $fakestudent->delete(); // tra ve ket qua true/false
+        }
+
+        // Cach 2: Student::destroy($student->id); // tra ve so luong ban ghi bi xoa
+        // Redirect ve danh sach (co thuc hien truy van lay ds moi)
+        return redirect()->route('FakeStudent.index');
+
     }
 }

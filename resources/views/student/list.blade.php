@@ -20,6 +20,7 @@
       <th scope="col">gender</th>
       <th scope="col">id gender</th>
       <th scope="col">age</th>
+      <th scope="col">action</th>
     </tr>
   </thead>
   <tbody>
@@ -38,6 +39,18 @@
         </td>
         <td>{{ $student->gender }}</td>
         <td>{{ $student->age }}</td>
+        <td>
+        <form action="{{ route('FakeStudent.edit', $student->id )}}" method="get">
+            @csrf
+            <button type="submit">EDIT</button>
+          </form>
+          <form action="{{ route('FakeStudent.destroy', $student->id )}}" method="POST">
+            @csrf
+            <input type="hidden" name="_method" value="DELETE"></input>
+            <button type="submit">DELETE</button>
+          </form>
+          
+          <!-- <a href="{{ route('FakeStudent.destroy', $student->id)}}"><button class="btn">delete</button></a></td> -->
     </tr>
     @endforeach
   </tbody>

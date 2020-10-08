@@ -2,7 +2,7 @@
 @extends('fakestudent-layout.master')
 
 <!-- thay doi noi dung don gian -->
-@section('title', 'Title list')
+@section('title', 'chi tiết sinh viên')
 
 <!-- thay doi noi dung phuc tap -->
 @section('header', 'Header List Extends')
@@ -20,6 +20,7 @@
       <th scope="col">gender</th>
       <th scope="col">id gender</th>
       <th scope="col">age</th>
+      <th scope="col">action</th>
     </tr>
   </thead>
   <tbody>
@@ -38,6 +39,7 @@
         </td>
         <td>{{ $student->gender }}</td>
         <td>{{ $student->age }}</td>
+        
     </tr>
   </tbody>
 </table>
