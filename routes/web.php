@@ -71,8 +71,8 @@ Route::post('/post-login', function(Request $request){
 
 
 // tao route resource cho student controller
-Route::resource('/FakeStudent', FakeStudentController::class);
-
+Route::resource('FakeStudent', FakeStudentController::class);
+// students -> edit(fakeStudent $student)
 // Tao route cho subject controller khong dung resource
 // Route::get('/Fakestudent', [FakeStudentController::class, 'index']) ->name('FakeStudent.index');
 

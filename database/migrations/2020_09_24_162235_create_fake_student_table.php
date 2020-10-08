@@ -17,6 +17,8 @@ class CreateFakeStudentTable extends Migration
             $table->id();
             $table->string('fakeStudent_name');
             $table->integer('fakeStudent_class');
+            $table->integer('gender');
+            $table->integer('age');
         });
     }
 
