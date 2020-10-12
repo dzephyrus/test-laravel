@@ -24,8 +24,8 @@ class ModelFactory extends Factory
     {
         return [
             //
-            'fakeStudent_name' => $this->faker->name,
-            'fakeStudent_class' => $this->faker->phoneNumber,
+            'fakeStudent_name' => $this->faker->name(10),
+            'fakeStudent_class' => $this->faker->phoneNumber(10),
         ];
     }
 }

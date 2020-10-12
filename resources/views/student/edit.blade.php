@@ -4,20 +4,21 @@
 
 @section('content-header', "edit student $student->fakeStudent_name")
 
-@section('content')
+<!-- @section('content') -->
 <form method="POST" action="{{route('FakeStudent.update', $student->id)}}">
     @csrf
   <div class="form-row">
     <div class="col">
       <input type="hidden" name="_method" value="PUT" name="FirstName" class="form-control" placeholder="First name">
+      <input type="hidden" name="id" value="{{$student->id}}" name="FirstName" class="form-control" placeholder="First name">
     </div>
     <div class="col">
         <label for="">name</label>
-      <input type="text" name="name" class="form-control" value="{{$student->fakeStudent_name}}" placeholder="Last name">
+      <input type="text" name="fakeStudent_name" class="form-control" value="{{$student->fakeStudent_name}}" placeholder="Last name">
     </div>
     <div class="col">
         <label for="">class</label>
-      <input type="text" class="form-control" name="class" value="{{$student->fakeStudent_class}}" placeholder="Last name">
+      <input type="text" class="form-control" name="fakeStudent_class" value="{{$student->fakeStudent_class}}" placeholder="Last name">
     </div>
     <div class="col">
         <label for="">gender</label>
@@ -36,7 +37,7 @@
       <input type="number" class="form-control" name="age" value="{{$student->age}}" placeholder="Last name">
     </div>
   </div>
-  <div class="w-100">
+  <div class="col-5 mx-auto">
       <button type="submit">update</button>
   </div>
   <div class="col-12">

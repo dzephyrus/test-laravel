@@ -53,6 +53,8 @@
           <!-- <a href="{{ route('FakeStudent.destroy', $student->id)}}"><button class="btn">delete</button></a></td> -->
     </tr>
     @endforeach
+    <!-- them dong de hien thi nut phan trang -->
+    
   </tbody>
 </table>
 
