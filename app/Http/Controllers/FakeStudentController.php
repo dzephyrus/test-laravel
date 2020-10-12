@@ -5,7 +5,6 @@ use DB;
 use App\Models\fakestudent;
 use Illuminate\Http\Request;
 
-
 class FakeStudentController extends Controller
 {
    
@@ -93,16 +92,28 @@ class FakeStudentController extends Controller
     {
         //
         // dd($request->all());
+        $updateStudent = fakestudent::find($request->id);
         //gan gia tri moi cho cac thuoc tinh cuar student can update
-        $fakestudent->fakeStudent_name = $request->fakeStudent_name;
+        $updateStudent->fakeStudent_name = $request->fakeStudent_name;
+        $updateStudent->fakeStudent_class = $request->fakeStudent_class;
+        $updateStudent->gender = $request->gender;
+        $updateStudent->age = $request->age;
         // Thuc hien goi phuong thuc save() de luu du lieu
-        $fakestudent->save();
+        
+        $updateStudent->save();
         
         // Cach 2: $student->update(['name' => $request->name]);
-        // Hoac $student->update([$request->all()])
+        // $fakestudent->update(['fakestudent_name' => $request->fakeStudent_name]);
+        // $fakestudent->update(['fakestudent_class' => $request->fakeStudent_class]);
+        // $fakestudent->update(['gender' => $request->gender]);
+        // $fakestudent->update(['age' => $request->age]);
+        // hoac $fakestudent->update([$request->all()]);
         // Khong can save
 
-        return redirect() ->route('FakeStudent.index');
+        return redirect()->route('FakeStudent.index');
+
+        // $data = fakeStudent::findOrFail($fakestudent->id)->update($request->all());
+        // return redirect()->route('FakeStudent.index')->with('msg', 'Cập nhật thông tin thành công');
     }
 
     /**
@@ -113,6 +124,7 @@ class FakeStudentController extends Controller
      */
     public function destroy(fakestudent $fakestudent)
     {
+        dd($fakestudent);
         // Kiem tra ton tai sinh vien -> xoa
         if($fakestudent) {
             $fakestudent->delete(); // tra ve ket qua true/false
@@ -121,6 +133,5 @@ class FakeStudentController extends Controller
         // Cach 2: Student::destroy($student->id); // tra ve so luong ban ghi bi xoa
         // Redirect ve danh sach (co thuc hien truy van lay ds moi)
         return redirect()->route('FakeStudent.index');
-
     }
 }

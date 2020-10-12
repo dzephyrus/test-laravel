@@ -76,4 +76,4 @@ Route::resource('FakeStudent', FakeStudentController::class);
 // Tao route cho subject controller khong dung resource
 // Route::get('/Fakestudent', [FakeStudentController::class, 'index']) ->name('FakeStudent.index');
 
-
+Route::DELETE('FakeStudent/delete/{id}', 'FakeStudentController@destroy');

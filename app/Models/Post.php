@@ -5,11 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class fakeStudent extends Model
+class Post extends Model
 {
     use HasFactory;
-
-    protected $table = 'fakeStudent';
 
     protected $fillable = [
         'fakeStudent_name',
@@ -19,11 +17,8 @@ class fakeStudent extends Model
     ];
 
     //function comment the hien moi quan he 1 post se co nhieu comment
-    public function comments(){
-        return $this -> hasMany(Comment::class, 'post_id', 'id');
-    }
     public function posts(){
         return $this -> hasMany(Post::class, 'student_id', 'id');
+        //return $this -> belongsToMany(Post::class, 'category_post', 'category_id', 'post_id);
     }
 }
-
