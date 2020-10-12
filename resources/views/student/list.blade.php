@@ -47,7 +47,7 @@
           <form action="{{ route('FakeStudent.destroy', $student->id )}}" method="POST">
             @csrf
             <input type="hidden" name="_method" value="DELETE"></input>
-            <button type="submit">DELETE</button>
+            <button type="submit" >DELETE</button>
           </form>
           
           <!-- <a href="{{ route('FakeStudent.destroy', $student->id)}}"><button class="btn">delete</button></a></td> -->

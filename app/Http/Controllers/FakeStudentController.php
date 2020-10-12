@@ -122,14 +122,16 @@ class FakeStudentController extends Controller
      * @param  \App\Models\fakestudent  $fakestudent
      * @return \Illuminate\Http\Response
      */
-    public function destroy(fakestudent $fakestudent)
+    public function destroy($id)
     {
-        dd($fakestudent);
+        
+        // dd($id);
         // Kiem tra ton tai sinh vien -> xoa
-        if($fakestudent) {
-            $fakestudent->delete(); // tra ve ket qua true/false
-        }
-
+        // if($fakestudent) {
+        //     $fakestudent->delete(); // tra ve ket qua true/false
+        // }
+        $deleteStudent = fakestudent::find($id);
+        $deleteStudent->delete();
         // Cach 2: Student::destroy($student->id); // tra ve so luong ban ghi bi xoa
         // Redirect ve danh sach (co thuc hien truy van lay ds moi)
         return redirect()->route('FakeStudent.index');
